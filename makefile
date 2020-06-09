@@ -8,16 +8,16 @@ FLAGS = -Wall
 INCLUDES = -lm
 
 imageDriver: imageUtils.o colorUtils.o imageDriver.c
-	$(CC) $(FLAGS) $(INCLUDES) imageUtils.o colorUtils.o imageDriver.c -o imageDriver
+	$(CC) $(FLAGS) imageUtils.o colorUtils.o imageDriver.c -o imageDriver $(INCLUDES) 
 
 imageUtils.o: imageUtils.c imageUtils.h
-	$(CC) $(FLAGS) $(INCLUDES) -c imageUtils.c -o imageUtils.o
+	$(CC) $(FLAGS) -c imageUtils.c -o imageUtils.o $(INCLUDES) 
 
 colorUtilsTesterCmocka: colorUtils.o colorUtilsTesterCmocka.c
 	$(CC) $(FLAGS) colorUtils.o colorUtilsTesterCmocka.c -o colorUtilsTesterCmocka $(INCLUDES) -l cmocka
 
 colorUtils.o: colorUtils.c colorUtils.h
-	$(CC) $(FLAGS) $(INCLUDES) -c colorUtils.c -o colorUtils.o
+	$(CC) $(FLAGS) -c colorUtils.c -o colorUtils.o $(INCLUDES) 
 
 clean:
 	rm -f *~ *.o
